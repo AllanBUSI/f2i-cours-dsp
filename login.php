@@ -12,16 +12,11 @@
   </head>
   <body>
     <div class="container bg-warning p-3 mt-5">
-            <h1>Facebook ou presque</h1>
             <form class="row" action="result.php" method="get">
                 <?php 
-                echo $form->Input("4", "nom", "Votre nom", "text", "Entrer un nom");
-                echo $form->Input("4", "prenom", "Votre prenom", "text", "Entrer un prenom");
                 echo $form->Input("4", "email", "Votre email", "email", "Entrer un email");
-                echo $form->Input("4", "telephone", "Votre téléphone", "tel", "Entrer un téléphone");
                 echo $form->Input("4", "password", "Votre mot de passe", "password", "Entrer un mot de passe");
-                echo $form->Input("4", "password2", "Votre confirmation de mot de passe", "password", "Entrer un mot de passe");
-                echo $form->Input("4", "Envoyer", "Envoyer", "submit", "");
+                echo $form->Input("4 mt-3 pt-3", "Envoyer", "Envoyer", "submit", "");
                 ?>
             </form>
     </div>    
