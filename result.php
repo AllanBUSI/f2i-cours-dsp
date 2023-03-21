@@ -1,14 +1,15 @@
 <?php 
+    require('database.php');
+    require('verification.php');
+
     $array = [];
-    function Verif($name, $min, $max,$message, $array) {
-        if ($name < $min || $name > $max) {
-            array_push($array, $message);
-        }
-        return $array;
-    }
 
+    $verification = new Verification();
+    $verification->email($_GET['email']);
 
+    echo $verification->getIndexError(0);
+    
 
-    echo $_GET['nom'];
-
+    $db = new Database();
+    $db->connectDb();
 ?>
