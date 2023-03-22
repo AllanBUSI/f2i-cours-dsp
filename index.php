@@ -12,16 +12,22 @@
   </head>
   <body>
     <div class="container bg-warning p-3 mt-5">
+            <?php 
+              echo isset($_GET['error']) ? '<div data-bs-dismiss="3000" class="alert alert-danger alert-dismissible fade show" role="alert">
+                      <strong>Voici mon erreur!</strong> '.$_GET['error'].'
+                      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>' : ''; 
+            ?>
             <h1>Facebook ou presque</h1>
             <form class="row" action="/back-end/index.php" method="post">
                 <?php 
-                echo $form->Input("4", "nom", "Votre nom", "text", "Entrer un nom");
-                echo $form->Input("4", "prenom", "Votre prenom", "text", "Entrer un prenom");
-                echo $form->Input("4", "email", "Votre email", "email", "Entrer un email");
-                echo $form->Input("4", "telephone", "Votre téléphone", "tel", "Entrer un téléphone");
-                echo $form->Input("4", "password", "Votre mot de passe", "password", "Entrer un mot de passe");
-                echo $form->Input("4", "password2", "Votre confirmation de mot de passe", "password", "Entrer un mot de passe");
-                echo $form->Input("4", "Envoyer", "Envoyer", "submit", "");
+                echo $form->Input("4", "nom", "Votre nom", "text", "Entrer un nom", $_GET['nom'] ?? '');
+                echo $form->Input("4", "prenom", "Votre prenom", "text", "Entrer un prenom", $_GET['prenom'] ?? '');
+                echo $form->Input("4", "email", "Votre email", "email", "Entrer un email", $_GET['email'] ?? '');
+                echo $form->Input("4", "telephone", "Votre téléphone", "tel", "Entrer un téléphone", $_GET['telephone'] ?? '');
+                echo $form->Input("4", "password", "Votre mot de passe", "password", "Entrer un mot de passe", '');
+                echo $form->Input("4", "password2", "Votre confirmation de mot de passe", "password", "Entrer un mot de passe", '');
+                echo $form->Input("4", "Envoyer", "Envoyer", "submit", "", 'Envoyer');
                 ?>
             </form>
     </div>    

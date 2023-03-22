@@ -35,7 +35,7 @@ class Database {
         // si le tableau est superieur a 1
         if (count($where) > 1) {
             // le where egale au résultat
-            $sql = $sql."WHERE ".$where[0]."= ?";
+            $sql = $sql." WHERE ".$where[0]."= ?";
             // la valeur dans le tableau pour execute
             $array = [$where[1]];
         }
@@ -49,12 +49,12 @@ class Database {
     public function insert($pdo, $champs, $table, $array, $pi){
         try {
             $sql = "INSERT INTO ";
-            $sql = $sql.$table."(".$champs.") VALUES ".$pi;
+            $sql = $sql.$table." ( ".$champs." ) VALUES (".$pi.");";
             $statement = $pdo->prepare($sql);
             $statement->execute($array);
             return $statement;
         } catch (Exception $e) {
-            return true;
+            return false;
         }
     }
 }

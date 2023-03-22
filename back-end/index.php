@@ -1,4 +1,5 @@
 <?php 
+session_start();
 require('../class/verification.php');
 require('../class/database.php');
 $verif = new Verification();
@@ -15,14 +16,14 @@ $verif->Phone($_POST['telephone']);
 $hash = $verif->Password($_POST['password'], $_POST['password2']);
 
 if (count($verif->getArray()) > 0) {
-    echo $verif->getIndexError(0);
+    return header('Location: http://localhost/?error='.$verif->getIndexError(0).'&nom='.$_POST['nom'].'&prenom='.$_POST['prenom'].'&email='.$_POST['email'].'&telephone='.$_POST['telephone']);
 }
 // init object class database
 $database = new Database();
 // connexion bdd
 $pdo = $database->connectDb();
 // create select requete
-$result = $database->select($pdo, '*', 'user', []);
+$result = $database->select($pdo, '*', 'user', ['email', $_POST['email']]);
 // formalisation du résultat
 $result = $result->fetchAll();
 // Verfier si l'email de l'utilisateur existe 
@@ -31,8 +32,7 @@ if (count($result) > 0) {
 }
 
 if (count($verif->getArray()) > 0) {
-    echo $verif->getIndexError(0);
-    return;
+    return header('Location: http://localhost/?error='.$verif->getIndexError(0).'&nom='.$_POST['nom'].'&prenom='.$_POST['prenom'].'&email='.$_POST['email'].'&telephone='.$_POST['telephone']);
 }
 
 // enregistrer la demande
@@ -41,18 +41,18 @@ $array = [
     $_POST['prenom'],
     $_POST['email'],
     $_POST['telephone'],
-    $_POST['password']
+    $hash
 ];
 
-$insert = $database->insert($pdo, "firstname, lastname, email, phone, password", "user", $array, '?,?,?,?,?');
+$insert = $database->insert($pdo, "firstname, lastname, email, phone, password", " user ", $array, '?,?,?,?,?');
 
-if ($insert == true) {
+if ($insert == false) {
     $verif->setArray(["L'utilisateur n'a pas pu être enregistrer"]);
 }
 
 if (count($verif->getArray()) > 0) {
-    echo $verif->getIndexError(0);
-    return;
+    return header('Location: http://localhost/?error='.$verif->getIndexError(0).'&nom='.$_POST['nom'].'&prenom='.$_POST['prenom'].'&email='.$_POST['email'].'&telephone='.$_POST['telephone']);
 }
 
-echo $insert;
+$_SESSION['email'] = $_POST['email'];
+header('Location: http://localhost/search.php'); 
