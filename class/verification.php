@@ -45,10 +45,6 @@ class Verification {
 
         $this->Verif($password, 2, 80, 'Votre mot de passe est invalide');
 
-        if (count($this->array) > 0) {
-            return $this->array;
-        }
-
         $hash = password_hash($password,PASSWORD_ARGON2I);
 
         return $hash;
