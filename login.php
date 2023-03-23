@@ -12,7 +12,13 @@
   </head>
   <body>
     <div class="container bg-warning p-3 mt-5">
-            <form class="row" action="result.php" method="get">
+            <?php 
+              echo isset($_GET['error']) ? '<div data-bs-dismiss="3000" class="alert alert-danger alert-dismissible fade show" role="alert">
+                      <strong>Voici mon erreur!</strong> '.$_GET['error'].'
+                      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>' : ''; 
+            ?>
+            <form class="row" action="/back-end/login.php" method="post">
                 <?php 
                 echo $form->Input("4", "email", "Votre email", "email", "Entrer un email", '');
                 echo $form->Input("4", "password", "Votre mot de passe", "password", "Entrer un mot de passe", '');

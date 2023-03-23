@@ -50,6 +50,19 @@ class Verification {
         return $hash;
     }
 
+    public function PasswordVerify($hash, $password) {
+
+        $this->Verif($password, 2, 80, 'Email/password invalide');
+
+        $hash = password_verify($password, $hash);
+
+        if (!$hash) {
+            array_push($this->array, 'Email/password invalide');
+        }
+
+        return $hash;
+    }
+
 }
 
 ?>

@@ -1,3 +1,5 @@
+
+<!-- // button qui envoi vers la page de deconnexion -->
 <?php 
     echo '<nav class="navbar navbar-expand-lg bg-body-tertiary">
     <div class="container-fluid">
@@ -28,7 +30,6 @@
             <a class="nav-link disabled">Disabled</a>
           </li>
         </ul>
-        // button qui envoi vers la page de deconnexion
         <a class="btn btn-outline-danger" href="../back-end/deconnexion.php">Deconnexion</a>
       </div>
     </div>
