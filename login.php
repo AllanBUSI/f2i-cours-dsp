@@ -1,5 +1,5 @@
 <?php 
-    require('form.php');
+    require('./class/form.php');
     $form = new Form();
 ?>
 <!doctype html>
@@ -14,9 +14,9 @@
     <div class="container bg-warning p-3 mt-5">
             <form class="row" action="result.php" method="get">
                 <?php 
-                echo $form->Input("4", "email", "Votre email", "email", "Entrer un email");
-                echo $form->Input("4", "password", "Votre mot de passe", "password", "Entrer un mot de passe");
-                echo $form->Input("4 mt-3 pt-3", "Envoyer", "Envoyer", "submit", "");
+                echo $form->Input("4", "email", "Votre email", "email", "Entrer un email", '');
+                echo $form->Input("4", "password", "Votre mot de passe", "password", "Entrer un mot de passe", '');
+                echo $form->Input("4 mt-3 pt-3", "Envoyer", "Envoyer", "submit", "", 'Valider');
                 ?>
             </form>
     </div>    
