@@ -3,7 +3,7 @@ session_start();
 require_once('./composant/header.php');
 require_once('./composant/navbar.php');
 if (!$_SESSION['email']) {
-    return header('Location: http://localhost/?error=Merci de vous connecter');
+    return header('Location: http://localhost/login.php?error=Merci de vous connecter');
 }
 
 ?>
