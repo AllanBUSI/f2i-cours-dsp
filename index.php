@@ -1,5 +1,6 @@
 <?php 
     require('./class/form.php');
+    require('./composant/navbar.php');
     $form = new Form();
 ?>
 <!doctype html>
